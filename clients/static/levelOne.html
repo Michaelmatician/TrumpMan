@@ -54,9 +54,9 @@
             4: 'ghostLid',
             5: 'ghostGate',
             6: 'burningmoney',
-            7: '',
+            7: 'scorebox',
             8: 'letters',
-            9: ''};
+            9: 'score'};
 
         var trumpman = { x: 12, y: 11}; //starting points for these characters
         var hillary = { x: 1, y: 1 };      var mueller = { x: 13, y: 9 };      var biden = { x: 12, y: 9};
@@ -117,7 +117,6 @@
           hillary.x--;
           drawHillary()
           }
-          // setTimeout(() => hillary.x++,1000);
         }
 
         function roamTodd(){
@@ -136,24 +135,31 @@
         document.onkeydown = function(e) {
           if(e.keyCode == 37){//left
             if(world[trumpman.y][trumpman.x - 1] != 1 && world[trumpman.y][trumpman.x - 1] != 8){
-              // setTimeout(() => trumpman.x--,1000); 
-              trumpman.x--; direction = 'trumpmanL';
+              // setInterval(() => {trumpman.x--},1000); 
+              document.getElementById('trumpman').style.transform = "rotateY(180deg)";
+              trumpman.x--;
             }
-            if([trumpman.x] == 0){trumpman.x = 23;}}
+            if([trumpman.x] == 0){trumpman.x = 23;}
+          }
 
           if(e.keyCode == 39){//right
             if(world[trumpman.y][trumpman.x+1] != 1  && world[trumpman.y][trumpman.x+1] !=8){
-              trumpman.x++;direction = 'trumpman';}
+              document.getElementById('trumpman').style.transform = "rotateY(0deg)";
+              trumpman.x++;direction = 'trumpman';
+              }
             if([trumpman.x] == 24){trumpman.x = 1;}}
 
           if(e.keyCode == 38){//up
-            if(world[trumpman.y-1][trumpman.x] != 1 && world[trumpman.y-1][trumpman.x] != 8)
+            if(world[trumpman.y-1][trumpman.x] != 1 && world[trumpman.y-1][trumpman.x] != 8) {
+                document.getElementById('trumpman').style.transform = "rotate(270deg)";
                 trumpman.y--;direction = 'trumpmanU';
-              }
+            }
+          }
 
           if(e.keyCode == 40){//down
             if(world[trumpman.y+1][trumpman.x] != 1 && world[trumpman.y+1][trumpman.x] != 8 && world[trumpman.y+1][trumpman.x] != 4 && world[trumpman.y+1][trumpman.x] != 5){
-              trumpman.y++;direction = 'trumpmanD';}}
+              document.getElementById('trumpman').style.transform = "rotate(90deg)";
+              trumpman.y++;}}
 
           if(world[trumpman.y][trumpman.x] == 2){//point score
             score +=10;}
