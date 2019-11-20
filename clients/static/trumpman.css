@@ -31,29 +31,37 @@ div.brick{
 
 #scorebox{
   height: 5vh;
-  width: 20vw;
+  width: 50vw;
   color: white;
   background-color: royalblue;
   margin: auto;
-  text-align: center;
-  /* display: flex; */
-  /* justify-content: space-between; */
-  /* position: fixed; */
+  /* text-align: right; */
+  /* align-content: center; */
+  /* display: inline-block; */
+  display: flex;
+  justify-content: space-between;
+
 }
 
 #score{
   height: 2.5vh;
-  width: 8vw;
-  padding:10px 0px;
+  width: 24vw;
+  padding-top: 2.5vh;
   font-size: small;
+  display: inline-block;
+  vertical-align: bottom;
+
 }
 
 #money{
   height: 2.5vh;
   width: 20vw;
-  padding:10px 0px;
+  padding-top: 2.5vh;
+  padding-right: 5vh;
   font-size: small;
   background-color: green;
+  vertical-align: bottom;
+  display: inline-block;
 }
 
 .letters{
@@ -86,6 +94,52 @@ width: 4vw;
   width: 4vw;
 }
 
+
+.pill{
+  background: url("images/pellet.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 20px 20px;
+  height: 5vh;
+  width: 4vw;
+  }
+
+#hillary{
+  background-image: url("images/hillary.png");
+  background-color: black;
+  height: 5vh;
+  width: 4vw;
+  display: inline-block;
+  background-size: contain;
+  background-repeat: no-repeat;
+  position: absolute;
+  background-position: center;
+  }
+
+#biden{
+    background: url("images/biden.png");
+    background-color: black;
+    height: 5vh;
+    width: 4vw;
+    display: inline-block;
+    background-size: contain;
+    background-repeat: no-repeat;
+    position: absolute;
+    background-position: center;
+    }
+  
+#mueller{
+      background: url("images/mueller.png");
+      background-color: black;
+      height: 5vh;
+      width: 4vw;
+      display: inline-block;
+      background-size: contain;
+      background-repeat: no-repeat;
+      position: absolute;
+      background-position: center;
+    }
+
 #trumpman{
 background-color: black;
 height: 5vh;
@@ -93,79 +147,46 @@ width: 4vw;
 display: inline-block;
 background-image: url("images/trumpman.gif");
 background-size: contain;
+background-repeat: no-repeat;
 position: absolute;
-background-repeat: no-repeat;
+/* background-position: center; */
 }
 
 
-  #trumpmanD{
-    background-color: black;
-    height: 5vh;
-    width: 4vw;
-    display: inline-block;
-    background-image: url("images/trumpmanD.gif");
-    background-size: contain;
-    position: absolute;
-    background-repeat: no-repeat;
-  }
+#trumpmanD{
+  background-color: black;
+  height: 5vh;
+  width: 4vw;
+  display: inline-block;
+  background-image: url("images/trumpmanD.gif");
+  background-size: contain;
+  position: absolute;
+  background-repeat: no-repeat;
+}
 
-  #trumpmanL{
-    background-color: black;
-    height: 5vh;
-    width: 4vw;
-    display: inline-block;
-    background-image: url("images/trumpmanL.gif");
-    background-size: contain;
-    position: absolute;
-    background-repeat: no-repeat;
-  }
+#trumpmanL{
+  background-color: black;
+  height: 5vh;
+  width: 4vw;
+  display: inline-block;
+  background-image: url("images/trumpmanL.gif");
+  background-size: contain;
+  position: absolute;
+  background-repeat: no-repeat;
+}
       
-  #trumpmanU{
-    background-color: black;
-    height: 5vh;
-    width: 4vw;
-    display: inline-block;
-    background-image: url("images/trumpmanU.gif");
-    background-size: contain;
-    position: absolute;
-    background-repeat: no-repeat;
-  }
-
-.mueller{
-  background: url("images/mueller.png");
-background-repeat: no-repeat;
-background-position: center;
-background-size: contain;
-height: 5vh;
-width: 4vw;
+#trumpmanU{
+  background-color: black;
+  height: 5vh;
+  width: 4vw;
+  display: inline-block;
+  background-image: url("images/trumpmanU.gif");
+  background-size: contain;
+  position: absolute;
+  background-repeat: no-repeat;
 }
 
-.hillary{
-background: url("images/hillary.png");
-background-repeat: no-repeat;
-background-position: center;
-background-size: contain;
-height: 5vh;
-width: 4vw;
-}
 
-.biden{
-background: url("images/biden.png");
-background-repeat: no-repeat;
-background-position: center;
-background-size: contain;
-height: 5vh;
-width: 4vw;
-}
-
-.pill{
-background: url("images/pellet.png");
-background-repeat: no-repeat;
-background-position: center;
-background-size: 20px 20px;
-height: 5vh;
-width: 4vw;
-}
 
 .snowflake{
   background: url("images/snowflake.png");

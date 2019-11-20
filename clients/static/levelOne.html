@@ -1,145 +1,181 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <link rel="stylesheet" href="trumpman.css">
+    <link rel="stylesheet" href="trumpman.css" />
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Trumpman</title>
   </head>
+
   <body>
-    <div id='world'></div>
+    <div id="world"></div>
     <div id="trumpman"></div>
-    <div id='scorebox'>
-      <div id='score'>Score <span class='score'></span></div>
-      <div id='money'>Money <span class = 'money'></span> </div>
+    <div id="hillary"></div>
+    <div id="biden"></div>
+    <div id="mueller"></div>
+    <div id="scorebox">
+      <div id="score">Score: <span class="score"></span></div>
+      <div id="money">Money: <span class="money"></span></div>
     </div>
   </body>
-  
-  <script type='text/javascript'>
+
+  <script type="text/javascript">
+
+      //GLOBAL VARIABLE DECLARATIONS
+
         var world = [
           [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
           [1,3,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,3,1],
           [1,2,8,8,8,2,8,8,8,2,8,0,8,2,8,0,0,0,8,2,8,8,8,2,1],
-          [1,2,0,8,0,2,8,10,8,2,8,0,8,2,8,8,0,8,8,2,8,10,8,2,1],
+          [1,2,0,8,0,2,8,6,8,2,8,0,8,2,8,8,0,8,8,2,8,6,8,2,1],
           [1,2,0,8,0,2,8,8,8,2,8,0,8,2,8,0,8,0,8,2,8,8,8,2,1],
           [1,2,0,8,0,2,8,8,0,2,8,0,8,2,8,0,3,0,8,2,8,2,2,2,1],
           [1,2,0,8,0,2,8,3,8,2,8,8,8,2,8,0,0,0,8,2,8,2,2,2,1],
           [1,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,1],
-          [1,1,1,1,1,2,1,1,1,2,1,4,9,4,1,2,1,1,1,2,1,1,1,1,1],
-          [0,0,0,0,0,2,2,2,2,2,1,5,6,7,1,2,2,2,2,2,0,0,0,0,0],
+          [1,1,1,1,1,2,1,1,1,2,1,4,5,4,1,2,1,1,1,2,1,1,1,1,1],
+          [0,0,0,0,0,2,2,2,2,2,1,0,0,0,1,2,2,2,2,2,0,0,0,0,0],
           [1,1,1,1,1,2,1,1,1,2,1,1,1,1,1,2,1,1,1,2,1,1,1,1,1],
           [1,3,2,2,2,2,2,2,2,2,2,2,0,2,2,2,2,2,2,2,2,2,2,3,1],
           [1,2,1,1,2,8,0,0,0,8,2,2,8,2,2,8,0,0,0,8,2,1,1,2,1],
-          [1,2,1,1,2,8,8,0,8,8,2,8,10,8,2,8,8,0,0,8,2,1,1,2,1],
+          [1,2,1,1,2,8,8,0,8,8,2,8,6,8,2,8,8,0,0,8,2,1,1,2,1],
           [1,2,1,1,2,8,0,8,0,8,2,8,8,8,2,8,0,8,0,8,2,1,1,2,1],
           [1,2,1,1,2,8,0,0,0,8,2,8,3,8,2,8,0,0,8,8,2,1,1,2,1],
           [1,2,1,1,2,8,0,0,0,8,2,8,2,8,2,8,0,0,0,8,2,1,1,2,1],
           [1,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,1],
           [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
-      ];
+        ];
 
-      var worldDict = {
-          0: 'empty',
-          1: 'brick',
-          2: 'pill',
-          3: 'coin',
-          4: 'ghostLid',
-          5: 'hillary',
-          6: 'biden',
-          7: 'mueller',
-          8: 'letters',
-          9: 'ghostGate',
-          10: 'burningmoney',
+        var worldDict = {//map graphics
+            0: 'empty',
+            1: 'brick',
+            2: 'snowflake',
+            3: 'coin',
+            4: 'ghostLid',
+            5: 'ghostGate',
+            6: 'burningmoney',
+            7: '',
+            8: 'letters',
+            9: ''};
 
-        };
+        var trumpman = { x: 12, y: 11}; //starting points for these characters
+        var hillary = { x: 1, y: 1 };      var mueller = { x: 13, y: 9 };      var biden = { x: 12, y: 9};
 
+        var hBeacon = { x:0, y:0}; var tBeacon = { x:0, y:20}; var mBeacon = { x:25, y:0};//beacons for ghosts in scatter mode
 
-      var trumpman = {
-        x: 12,
-        y: 11
-      };
+        var score = 0;      var money = 0;  //points
 
-      var score = 0;
-      var money = 0;
+    //FUNCTIONS
+        window.addEventListener("online",onFunction);
 
-      function mapLevel(){
-        var output = '';
-        for (var i = 0; i<world.length; i++){
-          output += "<div class = 'row'>";
-          for(var j= 0; j< world[i].length; j++){
-            output += "<div class = '" + worldDict[world[i][j]] + "'></div>";
+        function onFunction() {setInterval((roamHilly) => hillary.y--,1500);
+        }
+
+        function moveLeft() {setInterval(drawTrumpman,1000)};
+
+        function mapLevel(){//maps the game using the array and 'graphics' from the dictionary
+          var output = '';
+          for (var i = 0; i<world.length; i++){
+            output += "<div class = 'row'>";
+            for(var j= 0; j< world[i].length; j++){
+              output += "<div class = '" + worldDict[world[i][j]] + "'></div>";}
+              output += "</div>";// console.log(output);
+            };
+
+          document.getElementById('world').innerHTML = output;}
+        mapLevel();
+
+        function drawTrumpman(){
+            document.getElementById("trumpman").style.left = trumpman.x *  4 + 'vw'
+            document.getElementById("trumpman").style.top = trumpman.y * 5 + 'vh'
+        }
+
+        function drawHillary(){
+          var sprite = document.getElementById('hillary');
+          sprite.style.left = hillary.x * 4 + 'vw' 
+          // parseInt(sprite.style.left) + hillary.x + 'vw';
+          sprite.style.top = hillary.y * 5 + 'vh';
+        }
+
+        function roamHilly(){
+          var sprite = document.getElementById('hillary');
+          sprite.style.left = hillary.x * 4 + 'vw'
+          sprite.style.top = hillary.y * 5 + 'vh';
+          for (var i = 0; i<6;i++){
+          hillary.y++;
+          drawHillary()
           }
-            output += "</div>";
-            // console.log(output);
-        };
-        document.getElementById('world').innerHTML = output;
-      }
+          for (var i = 0; i<4;i++){
+          hillary.x++;
+          drawHillary()
+          }
+          for (var i = 0; i<6;i++){
+          hillary.y--;
+          drawHillary()
+          }
+          for (var i = 0; i<4;i++){
+          hillary.x--;
+          drawHillary()
+          }
+          // setTimeout(() => hillary.x++,1000);
+        }
 
-      mapLevel();
+        function roamTodd(){
+          document.getElementById('biden').style.left = biden.x * 4 + 'vw'
+          document.getElementById('biden').style.top = biden.y * 5 + 'vh'}
 
+        function roamMuelly(){
+          document.getElementById('mueller').style.left = mueller.x * 4 + 'vw'
+          document.getElementById('mueller').style.top = mueller.y * 5 + 'vh'}
 
-      function drawTrumpman(){
-        // if(direction == 'trumpmanD')
-        document.getElementById('trumpman').style.left =
-        trumpman.x *  4 + 'vw'
-        document.getElementById('trumpman').style.top =
-        trumpman.y * 5 + 'vh'
-      }
-
-      drawTrumpman();
+        drawTrumpman();
+        roamHilly();
+        roamMuelly();
+        roamTodd();
 
         document.onkeydown = function(e) {
-          // var direction ='trumpman';
-
           if(e.keyCode == 37){//left
             if(world[trumpman.y][trumpman.x - 1] != 1 && world[trumpman.y][trumpman.x - 1] != 8){
-              trumpman.x--; direction = 'trumpmanL';}
+              // setTimeout(() => trumpman.x--,1000); 
+              trumpman.x--; direction = 'trumpmanL';
+            }
             if([trumpman.x] == 0){trumpman.x = 23;}}
-            
-            if(e.keyCode == 39){//right
-              if(world[trumpman.y][trumpman.x+1] != 1  && world[trumpman.y][trumpman.x+1] !=8){
-              trumpman.x++;direction = 'trumpmanR';}
-              if([trumpman.x] == 24){trumpman.x = 1;}}
-          
-            if(e.keyCode == 38){//up
-              if(world[trumpman.y-1][trumpman.x] != 1 && world[trumpman.y-1][trumpman.x] != 8)
-                  trumpman.y--;direction = 'trumpmanU';}
+
+          if(e.keyCode == 39){//right
+            if(world[trumpman.y][trumpman.x+1] != 1  && world[trumpman.y][trumpman.x+1] !=8){
+              trumpman.x++;direction = 'trumpman';}
+            if([trumpman.x] == 24){trumpman.x = 1;}}
+
+          if(e.keyCode == 38){//up
+            if(world[trumpman.y-1][trumpman.x] != 1 && world[trumpman.y-1][trumpman.x] != 8)
+                trumpman.y--;direction = 'trumpmanU';
+              }
 
           if(e.keyCode == 40){//down
-            if(world[trumpman.y+1][trumpman.x] != 1 && world[trumpman.y+1][trumpman.x] != 8 && world[trumpman.y+1][trumpman.x] != 4 && world[trumpman.y+1][trumpman.x] != 9){
-            trumpman.y++;direction = 'trumpmanD';}}
+            if(world[trumpman.y+1][trumpman.x] != 1 && world[trumpman.y+1][trumpman.x] != 8 && world[trumpman.y+1][trumpman.x] != 4 && world[trumpman.y+1][trumpman.x] != 5){
+              trumpman.y++;direction = 'trumpmanD';}}
 
           if(world[trumpman.y][trumpman.x] == 2){//point score
             score +=10;}
-          if(world[trumpman.y][trumpman.x] == 3){//money count
-            money += 500000000;
-          }
+            if(world[trumpman.y][trumpman.x] == 3){//money count
+            money += 500000000;}
 
           world[trumpman.y][trumpman.x] = 0;
           drawTrumpman()
           mapLevel()
           showScore()
           levelComplete()
-
-          function levelComplete(){
+          showScore();
+        }
+        
+        function levelComplete(){
           if(money == 3500000000){
-            setTimeout(() => alert("The year is 2015! \n Congratulations!!! \nTrumpMan has enough money to run for President"),
-              100);
-          }
-        }
-
-
-        }
+            setTimeout(() => alert("The year is 2015! \n Congratulations!!! \nTrumpMan has enough money to run for President"),100);
+          }}
 
         function showScore(){
           document.querySelector(".score").innerHTML = score
-          document.querySelector(".money").innerHTML = money
-        }
-
-        showScore()
-
-
-
-      </script>
+          document.querySelector(".money").innerHTML = money}
+            
+  </script>
 </html>
