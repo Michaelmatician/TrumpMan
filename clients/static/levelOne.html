@@ -49,7 +49,7 @@
         var worldDict = {//map graphics
             0: 'empty',
             1: 'brick',
-            2: 'snowflake',
+            2: 'pill',
             3: 'coin',
             4: 'ghostLid',
             5: 'ghostGate',
@@ -86,20 +86,20 @@
         mapLevel();
 
         function drawTrumpman(){
-            document.getElementById("trumpman").style.left = trumpman.x *  4 + 'vw'
+            document.getElementById("trumpman").style.left = trumpman.x *  5 + 'vh'
             document.getElementById("trumpman").style.top = trumpman.y * 5 + 'vh'
         }
 
         function drawHillary(){
           var sprite = document.getElementById('hillary');
-          sprite.style.left = hillary.x * 4 + 'vw' 
+          sprite.style.left = hillary.x * 5 + 'vh' 
           // parseInt(sprite.style.left) + hillary.x + 'vw';
           sprite.style.top = hillary.y * 5 + 'vh';
         }
 
         function roamHilly(){
           var sprite = document.getElementById('hillary');
-          sprite.style.left = hillary.x * 4 + 'vw'
+          sprite.style.left = hillary.x * 5 + 'vh'
           sprite.style.top = hillary.y * 5 + 'vh';
           for (var i = 0; i<6;i++){
           hillary.y++;
@@ -120,11 +120,11 @@
         }
 
         function roamTodd(){
-          document.getElementById('biden').style.left = biden.x * 4 + 'vw'
+          document.getElementById('biden').style.left = biden.x * 5 + 'vh'
           document.getElementById('biden').style.top = biden.y * 5 + 'vh'}
 
         function roamMuelly(){
-          document.getElementById('mueller').style.left = mueller.x * 4 + 'vw'
+          document.getElementById('mueller').style.left = mueller.x * 5 + 'vh'
           document.getElementById('mueller').style.top = mueller.y * 5 + 'vh'}
 
         drawTrumpman();

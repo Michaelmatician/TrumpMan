@@ -18,7 +18,7 @@ body{
 div.row div{
   display: inline-block;
   /* height: 5vh;
-  width: 4vw; */
+  width: 5vh; */
   border-collapse: collapse;
   border-spacing: 0px;
 }
@@ -26,7 +26,7 @@ div.row div{
 div.brick{
   background-color: blue;
   height: 5vh;
-  width: 4vw;
+  width: 5vh;
 }
 
 #scorebox{
@@ -67,7 +67,7 @@ div.brick{
 .letters{
 background-color: #cb0421;
 height: 5vh;
-width: 4vw;
+width: 5vh;
 }
 
 .coin{
@@ -76,22 +76,22 @@ background-repeat: no-repeat;
 background-position: center;
 background-size: contain;
 height: 5vh;
-width: 4vw;
+width: 5vh;
 }
 
 .empty{
   height: 5vh;
-  width: 4vw;
+  width: 5vh;
 }
 
 .left{
   height: 5vh;
-  width: 4vw;
+  width: 5vh;
 }
 
 .right{
   height: 5vh;
-  width: 4vw;
+  width: 5vh;
 }
 
 
@@ -101,14 +101,14 @@ width: 4vw;
   background-position: center;
   background-size: 20px 20px;
   height: 5vh;
-  width: 4vw;
+  width: 5vh;
   }
 
 #hillary{
   background-image: url("images/hillary.png");
   background-color: black;
   height: 5vh;
-  width: 4vw;
+  width: 5vh;
   display: inline-block;
   background-size: contain;
   background-repeat: no-repeat;
@@ -120,7 +120,7 @@ width: 4vw;
     background: url("images/biden.png");
     background-color: black;
     height: 5vh;
-    width: 4vw;
+    width: 5vh;
     display: inline-block;
     background-size: contain;
     background-repeat: no-repeat;
@@ -132,7 +132,7 @@ width: 4vw;
       background: url("images/mueller.png");
       background-color: black;
       height: 5vh;
-      width: 4vw;
+      width: 5vh;
       display: inline-block;
       background-size: contain;
       background-repeat: no-repeat;
@@ -143,7 +143,7 @@ width: 4vw;
 #trumpman{
 background-color: black;
 height: 5vh;
-width: 4vw;
+width: 5vh;
 display: inline-block;
 background-image: url("images/trumpman.gif");
 background-size: contain;
@@ -161,18 +161,18 @@ background-position: center;
   background-position: center;
   background-size: contain;
   height: 5vh;
-  width: 4vw;
+  width: 5vh;
   }
 
 .ghostLid{
   border-top: white .1vh solid;
-  width: 4vw;
+  width: 5vh;
   height: 4.9vh;
 }
 
 .ghostGate{
   border-top: firebrick .1vh solid;
-  width: 4vw;
+  width: 5vh;
   height: 4.9vh;
 }
 
@@ -182,7 +182,7 @@ background: url("images/trumpwall.jpeg");
 background-position: center;
 background-size: cover;
 height: 5vh;
-width: 4vw;
+width: 5vh;
 }
 
 .burningmoney{
@@ -191,6 +191,6 @@ width: 4vw;
   background-position: center;
   background-size: contain;
   height: 5vh;
-  width: 4vw;
+  width: 5vh;
 }
 
