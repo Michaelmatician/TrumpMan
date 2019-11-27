@@ -1,0 +1,223 @@
+*{
+  margin: 0;
+  padding: 0;
+  line-height: 0;
+}
+
+#world{
+  color: white;
+  height: 100vh;
+  width: 100vw;
+}
+
+body{
+  background-color: black;
+
+}
+
+
+.hedge{
+background: url("images/hedge.jpeg");
+background-repeat: no-repeat;
+background-position: center;
+background-size: contain;
+height: 4.5vh;
+width: 5vh;
+}
+
+div.row div{
+  display: inline-block;
+  /* height: 4.5vh;
+  width: 5vh; */
+  border-collapse: collapse;
+  border-spacing: 0px;
+}
+
+div.brick{
+  background-color:white;
+  height: 4.5vh;
+  width: 5vh;
+}
+
+#flagtop{
+ /* margin: auto; */
+}
+img{
+  margin: auto;
+  height: 20vh;
+}
+
+#scorebox{
+  height: 4.5vh;
+  width: 80vw;
+  color: white;
+  background-color: royalblue;
+  margin-left: 10vw;
+  /* text-align: right; */
+  /* align-content: center; */
+  /* display: inline-block; */
+  display: flex;
+  justify-content: space-between;
+
+}
+
+#score{
+  height: 2.5vh;
+  width: 40vw;
+  padding-top: 2.5vh;
+  font-size: small;
+  display: inline-block;
+  vertical-align: bottom;
+
+}
+
+#money{
+  height: 2.5vh;
+  width: 4x0vw;
+  padding-top: 2.5vh;
+  padding-right: 5vh;
+  font-size: small;
+  background-color: green;
+  vertical-align: bottom;
+  display: inline-block;
+}
+
+.letters{
+background-color: #cb0421;
+height: 4.5vh;
+width: 5vh;
+}
+
+.coin{
+background: url("images/coin.gif");
+background-repeat: no-repeat;
+background-position: center;
+background-size: contain;
+height: 4.5vh;
+width: 5vh;
+}
+
+.empty{
+  height: 4.5vh;
+  width: 5vh;
+}
+
+.left{
+  height: 4.5vh;
+  width: 5vh;
+}
+
+.right{
+  height: 4.5vh;
+  width: 5vh;
+}
+
+
+.pill{
+  background: url("images/pellet.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 20px 20px;
+  height: 4.5vh;
+  width: 5vh;
+  }
+
+#hillary{
+  background-image: url("images/hillary.png");
+  background-color: black;
+  height: 4.5vh;
+  width: 5vh;
+  display: inline-block;
+  background-size: contain;
+  background-repeat: no-repeat;
+  position: absolute;
+  background-position: center;
+  }
+
+#bernie{
+    background: url("images/bernie.png");
+    background-color: black;
+    height: 4.5vh;
+    width: 5vh;
+    display: inline-block;
+    background-size: contain;
+    background-repeat: no-repeat;
+    position: absolute;
+    background-position: center;
+    }
+  
+#arnold{
+      background: url("images/arnold.png");
+      background-color: black;
+      height: 4.5vh;
+      width: 5vh;
+      display: inline-block;
+      background-size: contain;
+      background-repeat: no-repeat;
+      position: absolute;
+      background-position: center;
+    }
+
+  #barack{
+    background: url("images/obama.png");
+    background-color: black;
+    height: 4.5vh;
+    width: 5vh;
+    display: inline-block;
+    background-size: contain;
+    background-repeat: no-repeat;
+    position: absolute;
+    background-position: center;
+  }
+
+#trumpman{
+background-color: black;
+height: 4.5vh;
+width: 5vh;
+display: inline-block;
+background-image: url("images/trumpman-infinity.gif");
+background-size: contain;
+background-repeat: no-repeat;
+position: absolute;
+background-position: center;
+}
+
+.snowflake{
+  background: url("images/snowflake.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  height: 4.5vh;
+  width: 5vh;
+  }
+
+.ghostLid{
+  border-top: white .1vh solid;
+  width: 5vh;
+  height: 4.9vh;
+}
+
+.ghostGate{
+  border-top: firebrick .1vh solid;
+  width: 5vh;
+  height: 4.9vh;
+}
+
+.wall{
+background: url("images/trumpwall.jpeg");
+/* background-repeat: no-repeat; */
+background-position: center;
+background-size: cover;
+height: 4.5vh;
+width: 5vh;
+}
+
+.burningmoney{
+  background: url("images/money.gif");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  height: 4.5vh;
+  width: 5vh;
+}
+

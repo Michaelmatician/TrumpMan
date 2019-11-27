@@ -23,18 +23,14 @@ div.row div{
   border-spacing: 0px;
 }
 
-div.brick{
-  background-color: blue;
-  height: 5vh;
-  width: 5vh;
-}
+
 
 #scorebox{
   height: 5vh;
-  width: 50vw;
+  width: 80vw;
   color: white;
   background-color: royalblue;
-  margin: auto;
+  margin-left: 10vw;
   /* text-align: right; */
   /* align-content: center; */
   /* display: inline-block; */
@@ -45,7 +41,7 @@ div.brick{
 
 #score{
   height: 2.5vh;
-  width: 24vw;
+  width: 40vw;
   padding-top: 2.5vh;
   font-size: small;
   display: inline-block;
@@ -55,7 +51,7 @@ div.brick{
 
 #money{
   height: 2.5vh;
-  width: 20vw;
+  width: 4x0vw;
   padding-top: 2.5vh;
   padding-right: 5vh;
   font-size: small;
@@ -70,6 +66,12 @@ height: 5vh;
 width: 5vh;
 }
 
+div.brick{
+  background-color: blue;
+  height: 5vh;
+  width: 5vh;
+}
+
 .coin{
 background: url("images/coin.gif");
 background-repeat: no-repeat;
@@ -80,16 +82,6 @@ width: 5vh;
 }
 
 .empty{
-  height: 5vh;
-  width: 5vh;
-}
-
-.left{
-  height: 5vh;
-  width: 5vh;
-}
-
-.right{
   height: 5vh;
   width: 5vh;
 }
@@ -116,8 +108,8 @@ width: 5vh;
   background-position: center;
   }
 
-#biden{
-    background: url("images/biden.png");
+#bernie{
+    background: url("images/bernie.png");
     background-color: black;
     height: 5vh;
     width: 5vh;
@@ -128,8 +120,8 @@ width: 5vh;
     background-position: center;
     }
   
-#mueller{
-      background: url("images/mueller.png");
+#arnold{
+      background: url("images/arnold.png");
       background-color: black;
       height: 5vh;
       width: 5vh;
@@ -140,20 +132,29 @@ width: 5vh;
       background-position: center;
     }
 
+  #barack{
+    background: url("images/obama.png");
+    background-color: black;
+    height: 5vh;
+    width: 5vh;
+    display: inline-block;
+    background-size: contain;
+    background-repeat: no-repeat;
+    position: absolute;
+    background-position: center;
+  }
+
 #trumpman{
 background-color: black;
 height: 5vh;
 width: 5vh;
 display: inline-block;
-background-image: url("images/trumpman.gif");
+background-image: url("images/trumpman-infinity.gif");
 background-size: contain;
 background-repeat: no-repeat;
 position: absolute;
 background-position: center;
 }
-
-
-
 
 .snowflake{
   background: url("images/snowflake.png");

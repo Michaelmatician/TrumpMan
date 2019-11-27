@@ -12,8 +12,9 @@
     <div id="world"></div>
     <div id="trumpman"></div>
     <div id="hillary"></div>
-    <div id="biden"></div>
-    <div id="mueller"></div>
+    <div id="bernie"></div>
+    <div id="arnold"></div>
+    <div id="barack"></div>
     <div id="scorebox">
       <div id="score">Score: <span class="score"></span></div>
       <div id="money">Money: <span class="money"></span></div>
@@ -23,6 +24,12 @@
   <script type="text/javascript">
 
       //GLOBAL VARIABLE DECLARATIONS
+
+      // returns boolean
+
+      const pilleat = new Audio('soundFX/pilleat.wav');
+      const coineat = new Audio('soundFX/coineat.wav');
+      const death = new Audio('soundFX/death.wav');
 
         var world = [
           [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
@@ -45,143 +52,372 @@
           [1,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,1],
           [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
         ];
-
-        var worldDict = {//map graphics
-            0: 'empty',
-            1: 'brick',
-            2: 'pill',
-            3: 'coin',
-            4: 'ghostLid',
-            5: 'ghostGate',
-            6: 'burningmoney',
-            7: 'scorebox',
-            8: 'letters',
-            9: 'score'};
-
-        var trumpman = { x: 12, y: 11}; //starting points for these characters
-        var hillary = { x: 1, y: 1 };      var mueller = { x: 13, y: 9 };      var biden = { x: 12, y: 9};
-
-        var hBeacon = { x:0, y:0}; var tBeacon = { x:0, y:20}; var mBeacon = { x:25, y:0};//beacons for ghosts in scatter mode
-
-        var score = 0;      var money = 0;  //points
-
-    //FUNCTIONS
-        window.addEventListener("online",onFunction);
-
-        function onFunction() {setInterval((roamHilly) => hillary.y--,1500);
-        }
-
-        function moveLeft() {setInterval(drawTrumpman,1000)};
-
-        function mapLevel(){//maps the game using the array and 'graphics' from the dictionary
-          var output = '';
-          for (var i = 0; i<world.length; i++){
-            output += "<div class = 'row'>";
-            for(var j= 0; j< world[i].length; j++){
-              output += "<div class = '" + worldDict[world[i][j]] + "'></div>";}
-              output += "</div>";// console.log(output);
-            };
-
-          document.getElementById('world').innerHTML = output;}
-        mapLevel();
-
-        function drawTrumpman(){
-            document.getElementById("trumpman").style.left = trumpman.x *  5 + 'vh'
-            document.getElementById("trumpman").style.top = trumpman.y * 5 + 'vh'
-        }
-
-        function drawHillary(){
-          var sprite = document.getElementById('hillary');
-          sprite.style.left = hillary.x * 5 + 'vh' 
-          // parseInt(sprite.style.left) + hillary.x + 'vw';
-          sprite.style.top = hillary.y * 5 + 'vh';
-        }
-
-        function roamHilly(){
-          var sprite = document.getElementById('hillary');
-          sprite.style.left = hillary.x * 5 + 'vh'
-          sprite.style.top = hillary.y * 5 + 'vh';
-          for (var i = 0; i<6;i++){
-          hillary.y++;
-          drawHillary()
-          }
-          for (var i = 0; i<4;i++){
-          hillary.x++;
-          drawHillary()
-          }
-          for (var i = 0; i<6;i++){
-          hillary.y--;
-          drawHillary()
-          }
-          for (var i = 0; i<4;i++){
-          hillary.x--;
-          drawHillary()
-          }
-        }
-
-        function roamTodd(){
-          document.getElementById('biden').style.left = biden.x * 5 + 'vh'
-          document.getElementById('biden').style.top = biden.y * 5 + 'vh'}
-
-        function roamMuelly(){
-          document.getElementById('mueller').style.left = mueller.x * 5 + 'vh'
-          document.getElementById('mueller').style.top = mueller.y * 5 + 'vh'}
-
-        drawTrumpman();
-        roamHilly();
-        roamMuelly();
-        roamTodd();
-
-        document.onkeydown = function(e) {
-          if(e.keyCode == 37){//left
-            if(world[trumpman.y][trumpman.x - 1] != 1 && world[trumpman.y][trumpman.x - 1] != 8){
-              // setInterval(() => {trumpman.x--},1000); 
-              document.getElementById('trumpman').style.transform = "rotateY(180deg)";
-              trumpman.x--;
-            }
-            if([trumpman.x] == 0){trumpman.x = 23;}
-          }
-
-          if(e.keyCode == 39){//right
-            if(world[trumpman.y][trumpman.x+1] != 1  && world[trumpman.y][trumpman.x+1] !=8){
-              document.getElementById('trumpman').style.transform = "rotateY(0deg)";
-              trumpman.x++;direction = 'trumpman';
-              }
-            if([trumpman.x] == 24){trumpman.x = 1;}}
-
-          if(e.keyCode == 38){//up
-            if(world[trumpman.y-1][trumpman.x] != 1 && world[trumpman.y-1][trumpman.x] != 8) {
-                document.getElementById('trumpman').style.transform = "rotate(270deg)";
-                trumpman.y--;direction = 'trumpmanU';
-            }
-          }
-
-          if(e.keyCode == 40){//down
-            if(world[trumpman.y+1][trumpman.x] != 1 && world[trumpman.y+1][trumpman.x] != 8 && world[trumpman.y+1][trumpman.x] != 4 && world[trumpman.y+1][trumpman.x] != 5){
-              document.getElementById('trumpman').style.transform = "rotate(90deg)";
-              trumpman.y++;}}
-
-          if(world[trumpman.y][trumpman.x] == 2){//point score
-            score +=10;}
-            if(world[trumpman.y][trumpman.x] == 3){//money count
-            money += 500000000;}
-
-          world[trumpman.y][trumpman.x] = 0;
-          drawTrumpman()
-          mapLevel()
-          showScore()
-          levelComplete()
-          showScore();
-        }
         
-        function levelComplete(){
+      var worldDict = {//map graphics
+        0: 'empty',
+        1: 'brick',
+        2: 'snowflake',
+        3: 'coin',
+        4: 'ghostLid',
+        5: 'ghostGate',
+        6: 'burningmoney',
+        7: 'scorebox',
+        8: 'letters',
+        9: 'score'};
+        
+      var trumpman = { x: 12, y: 11, name: "trump"}; //starting points for these characters
+      var hillary = { x: 1, y: 1, direction: "down", name: 'hillary'};      
+      var arnold = { x: 1, y: 11, direction: "down", name: 'arnold'};
+      var bernie = { x: 23, y: 1, direction: "down", name: 'bernie'};      
+      var barack = {x: 23, y: 11, direction: "down", name: 'barack'};
+
+      var sprite = document.getElementById('hillary');
+      var spriteA = document.getElementById('arnold');
+      var spriteBe = document.getElementById('bernie');
+      var spriteBa = document.getElementById('barack');
+
+      var score = 0;      
+      var money = 0;  //points
+      var i = 0;
+      var j = 0;
+      var k = 0;
+      var l = 0;
+    //FUNCTIONS
+
+    function checkOverlap(char1, char2) {
+      if(char1.x === char2.x && char1.y === char2.y)
+        {deathAlert(char1); gameOver()};
+      }
+
+
+    function deathAlert(char1){
+      death.play();
+      if(char1.name == "hillary"){
+        alert("That nasty woman got you");}
+      else if(char1.name == "arnold"){
+        alert('You have been terminated')}
+      else if(char1.name == "bernie"){
+        alert('Take that you schmaltz!')}
+      else if(char1.name == 'barack'){
+        alert("Mama's fixing up some of her famous gumbo!")}
+    }
+
+    function gameOver(){
+      console.log(money, score, world)
+      money = 0;
+      score = 0;
+      world = [
+        [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
+        [1,3,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,3,1],
+        [1,2,8,8,8,2,8,8,8,2,8,0,8,2,8,0,0,0,8,2,8,8,8,2,1],
+        [1,2,0,8,0,2,8,6,8,2,8,0,8,2,8,8,0,8,8,2,8,6,8,2,1],
+        [1,2,0,8,0,2,8,8,8,2,8,0,8,2,8,0,8,0,8,2,8,8,8,2,1],
+        [1,2,0,8,0,2,8,8,0,2,8,0,8,2,8,0,3,0,8,2,8,2,2,2,1],
+        [1,2,0,8,0,2,8,3,8,2,8,8,8,2,8,0,0,0,8,2,8,2,2,2,1],
+        [1,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,1],
+        [1,1,1,1,1,2,1,1,1,2,1,4,5,4,1,2,1,1,1,2,1,1,1,1,1],
+        [0,0,0,0,0,2,2,2,2,2,1,0,0,0,1,2,2,2,2,2,0,0,0,0,0],
+        [1,1,1,1,1,2,1,1,1,2,1,1,1,1,1,2,1,1,1,2,1,1,1,1,1],
+        [1,3,2,2,2,2,2,2,2,2,2,2,0,2,2,2,2,2,2,2,2,2,2,3,1],
+        [1,2,1,1,2,8,0,0,0,8,2,2,8,2,2,8,0,0,0,8,2,1,1,2,1],
+        [1,2,1,1,2,8,8,0,8,8,2,8,6,8,2,8,8,0,0,8,2,1,1,2,1],
+        [1,2,1,1,2,8,0,8,0,8,2,8,8,8,2,8,0,8,0,8,2,1,1,2,1],
+        [1,2,1,1,2,8,0,0,0,8,2,8,3,8,2,8,0,0,8,8,2,1,1,2,1],
+        [1,2,1,1,2,8,0,0,0,8,2,8,2,8,2,8,0,0,0,8,2,1,1,2,1],
+        [1,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,1],
+        [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
+      ];
+
+      mapLevel();
+      var trumpman = { x: 12, y: 11}; //starting points for these characters
+      
+      drawTrumpman();
+      
+      var hillary = { x: 1, y: 1};     var arnold = { x: 1, y: 17};      var bernie = { x: 11, y: 17};    
+      drawHillary();
+      drawArnold();
+      drawBernie();
+      drawBarack();
+      return money, score
+    }
+    function sleep(ms) {return new Promise(resolve => setTimeout(resolve, ms));}
+
+
+
+
+
+
+
+    function mapLevel(){//maps the game using the array and 'graphics' from the dictionary
+      var output = '';
+      for (var i = 0; i<world.length; i++){
+        output += "<div class = 'row'>";
+        for(var j= 0; j< world[i].length; j++){
+          output += "<div class = '" + worldDict[world[i][j]] + "'></div>";}
+          output += "</div>";// console.log(output);
+        };
+      document.getElementById('world').innerHTML = output;
+    }
+
+    function levelComplete(){
           if(money == 3500000000){
             setTimeout(() => alert("The year is 2015! \n Congratulations!!! \nTrumpMan has enough money to run for President"),100);
+            money += 1;
+            return money;
           }}
 
-        function showScore(){
-          document.querySelector(".score").innerHTML = score
-          document.querySelector(".money").innerHTML = money}
+    function showScore(){
+      document.querySelector(".score").innerHTML = score
+      document.querySelector(".money").innerHTML = money}
+    
+    mapLevel();
+
+    function drawTrumpman(){
+        document.getElementById("trumpman").style.left = trumpman.x *  5 + 'vh'
+        document.getElementById("trumpman").style.top = trumpman.y * 5 + 'vh'
+    }
+
+    function drawHillary(){
+      sprite.style.left = hillary.x * 5 + 'vh' 
+      sprite.style.top = hillary.y * 5 + 'vh';
+    }
+
+    function drawBernie(){
+      spriteBe.style.left = bernie.x * 5 + 'vh'
+      spriteBe.style.top = bernie.y * 5 + 'vh'
+    }
+
+    function drawArnold(){
+      spriteA.style.left = arnold.x * 5 + 'vh'
+      spriteA.style.top = arnold.y * 5 + 'vh'
+    }
+
+    function drawBarack(){
+      spriteBa.style.left = barack.x * 5 + 'vh'
+      spriteBa.style.top = barack.y * 5 + 'vh'
+    }
+
+    async function spriteHilly() {//to compress code Programmer should build an array, each element in the array should be an array with 2 elements: x and y coordinates
+      while(true){
+        // console.log("hillary:" + hillary.y + hillary.x, "trump" + trumpman.y + trumpman.x);
+        while(hillary.direction == "down" && i < 6){
+          drawHillary();
+            await sleep(200);
+            if(checkOverlap(hillary, trumpman)) return gameOver();
+            hillary.y++;
+            drawHillary();
+            i++;
+            if(i == 6){
+              hillary.direction = "right"; 
+              i = 0;
+            }
+        }
+        while(hillary.direction == "right" && i < 4){
+          // console.log(hillary.direction, hillary.x)
+          await sleep(200);
+          if(checkOverlap(hillary, trumpman)) return gameOver();
+          hillary.x++;
+          drawHillary();
+          i++
+          if(i == 4){hillary.direction = 'up'; i = 0};
+        }
+        while(hillary.direction == 'up' && i < 6){
+          // console.log(hillary.direction, hillary.x)
+          await sleep(200);
+          if(checkOverlap(hillary, trumpman)) return gameOver();
+          hillary.y--;
+          drawHillary();
+          i++;
+          if(i == 6){hillary.direction = 'left'; i = 0};
+          }
+        while(hillary.direction == 'left' && i < 4){
+          await sleep(200);
+          if(checkOverlap(hillary, trumpman)) return gameOver();
+          hillary.x--;
+          drawHillary();
+          i++;
+          if(i==4){hillary.direction = 'down'; i = 0};
+        }
+      } 
+    }
+
+    async function spriteArnie() {
+      while(world[arnold.y][arnold.x] != world[trumpman.y][trumpman.x]){
+      while(arnold.direction == "down" && j < 6){
+        drawArnold();
+          await sleep(300);
+          if(checkOverlap(arnold, trumpman)) return gameOver();
+          arnold.y++;
+          drawArnold();
+          j++;
+          if(j == 6){
+            arnold.direction = "right"; 
+            j = 0;
+          }
+      }
+      while(arnold.direction == "right" && j < 4){
+          // console.log(arnold.direction, arnold.x)
+          await sleep(300);
+          if(checkOverlap(arnold, trumpman)) return gameOver();
+          arnold.x++;
+          drawArnold();
+          j++
+          if(j == 3){arnold.direction = 'up'; j = 0};
+        }
+      while(arnold.direction == 'up' && j < 7){
+        await sleep(300);
+        if(checkOverlap(arnold, trumpman)) return gameOver();
+            arnold.y--;
+            drawArnold();
+            j++;
+          if(j == 6){arnold.direction = 'left'; j = 0};
+        }
+        while(arnold.direction == 'left' && j < 3){
+          await sleep(300);
+          if(checkOverlap(arnold, trumpman)) return gameOver();
+            arnold.x--;
+            drawArnold();
+            j++;
+          if(j==3){arnold.direction = 'down'; j = 0};
+        }
+      }
+    }     
+
+    async function spriteBernie() {
+      while(world[bernie.y][bernie.x] != world[trumpman.y][trumpman.x]){
+        while(bernie.direction == "down" && k < 6){
+          drawBernie();
+          await sleep(1000);
+          if(checkOverlap(bernie, trumpman)) return gameOver();
+          bernie.y++;
+          drawBernie();
+          k++;
+          if(k == 6){
+            bernie.direction = "left"; 
+            k = 0;
+          }
+        }
+        while(bernie.direction == 'left' && k < 4){
+          await sleep(1000);
+          if(checkOverlap(bernie, trumpman)) return gameOver();
+          bernie.x--;
+          drawBernie();
+          k++;
+          if(k==4){bernie.direction = 'up'; k = 0};
+        }
+        while(bernie.direction == 'up' && k < 6){
+        // console.log(bernie.direction, bernie.x)
+          await sleep(1000);
+          if(checkOverlap(bernie, trumpman)) return gameOver();
+          bernie.y--;
+          drawBernie();
+          k++;
+          if(k == 6){bernie.direction = 'right'; k = 0};
+        }
+        while(bernie.direction == "right" && k < 4){
+          // console.log(bernie.direction, bernie.x)
+          await sleep(1000);
+          if(checkOverlap(bernie, trumpman)) return gameOver();
+          bernie.x++;
+          drawBernie();
+          k++
+          if(k == 4){bernie.direction = 'down'; k = 0};
+        }
+      }
+    }     
+
+    async function spriteBarack() {
+      while(world[barack.y][barack.x] != world[trumpman.y][trumpman.x]){
+      while(barack.direction == "down" && l < 6){
+        drawBarack();
+        await sleep(200);
+        if(checkOverlap(barack, trumpman)) return gameOver();
+        barack.y++;
+        drawBarack();
+        l++;
+        if(l == 6){
+          barack.direction = "left"; 
+          l = 0;
+        }
+      }
+      while(barack.direction == "left" && l < 4){
+          // console.log(barack.direction, barack.x)
+          await sleep(200);
+          if(checkOverlap(barack, trumpman)) return gameOver();
+          barack.x--;
+          drawBarack();
+          l++
+          if(l == 3){barack.direction = 'up'; l = 0};
+        }
+
+      while(barack.direction == 'up' && l < 6){
+        // console.log(barack.direction, barack.x)
+          await sleep(200);
+          if(checkOverlap(barack, trumpman)) return gameOver();
+          barack.y--;
+          drawBarack();
+          l++;
+          if(l == 6){barack.direction = 'right'; l = 0};
+        }
+        while(barack.direction == 'right' && l < 4){
+          await sleep(200);
+          if(checkOverlap(barack, trumpman)) return gameOver();
+          barack.x++;
+          drawBarack();
+          l++;
+          if(l==3){barack.direction = 'down'; l = 0};
+        }
+      }
+    }     
+
+    drawTrumpman();
+    spriteHilly();
+    spriteBernie();
+    spriteArnie();
+    spriteBarack();
+
+    document.onkeydown = function(e) {
+      if(e.keyCode == 37){//left
+        if(world[trumpman.y][trumpman.x - 1] != 1 && world[trumpman.y][trumpman.x - 1] != 8){
+          document.getElementById('trumpman').style.transform = "rotateY(180deg)";
+          trumpman.x--;
+        }
+        if([trumpman.x] == 0){trumpman.x = 23;}
+      }
+
+      if(e.keyCode == 39){//right
+        if(world[trumpman.y][trumpman.x+1] != 1  && world[trumpman.y][trumpman.x+1] !=8){
+          document.getElementById('trumpman').style.transform = "rotateY(0deg)";
+          trumpman.x++;direction = 'trumpman';
+          }
+        if([trumpman.x] == 24){trumpman.x = 1;}}
+
+      if(e.keyCode == 38){//up
+        if(world[trumpman.y-1][trumpman.x] != 1 && world[trumpman.y-1][trumpman.x] != 8) {
+            document.getElementById('trumpman').style.transform = "rotate(270deg)";
+            trumpman.y--;direction = 'trumpmanU';
+        }
+      }
+
+      if(e.keyCode == 40){//down
+        if(world[trumpman.y+1][trumpman.x] != 1 && world[trumpman.y+1][trumpman.x] != 8 && world[trumpman.y+1][trumpman.x] != 4 && world[trumpman.y+1][trumpman.x] != 5){
+          document.getElementById('trumpman').style.transform = "rotate(90deg)";
+          trumpman.y++;}}
+
+      if(world[trumpman.y][trumpman.x] == 2){//point score
+        pilleat.play();
+        score +=10;}
+      if(world[trumpman.y][trumpman.x] == 3){//money count
+        coineat.play();
+        money += 500000000;}
+
+      world[trumpman.y][trumpman.x] = 0;
+      drawTrumpman()
+      mapLevel()
+      showScore()
+      levelComplete()
+    }
+
             
   </script>
 </html>

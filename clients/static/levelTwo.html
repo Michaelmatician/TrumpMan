@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="levelTwo.css" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Trumpman</title>
+  </head>
+
+  <body>
+    <div id="world"></div>
+    <div id="trumpman"></div>
+    <div id="hillary"></div>
+    <div id="bernie"></div>
+    <div id="arnold"></div>
+    <div id="barack"></div>
+    <div id="scorebox">
+      <div id="score">Score: <span class="score"></span></div>
+      <div id="money">Money: <span class="money"></span></div>
+    </div>
+  </body>
+
+  <script type="text/javascript">
+
+      //GLOBAL VARIABLE DECLARATIONS
+
+      // returns boolean
+
+
+      var world = [
+          [1,1,1,1,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,1,1,1,1],
+          [1,3,2,2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,2,2,3,1],
+          [1,3,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,3,1],
+          [1,2,8,8,8,2,2,8,2,2,8,2,8,8,8,2,8,2,8,2,2,2,8,2,2,1],
+          [1,2,8,2,2,8,2,8,2,2,8,2,2,8,2,2,8,2,8,8,6,2,8,2,2,1],
+          [1,2,8,8,8,2,2,8,2,2,8,2,2,8,2,2,8,2,8,2,8,2,8,2,2,1],
+          [1,2,8,2,2,2,2,8,2,2,8,2,2,8,2,3,8,2,8,2,2,8,8,2,2,1],
+          [1,2,8,2,2,2,2,2,8,8,2,2,2,8,2,2,8,2,8,2,2,2,8,2,2,1],
+          [1,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,1],
+          [1,1,1,1,1,2,1,1,1,2,1,4,5,4,1,2,1,1,1,2,1,1,1,1,2,1],
+          [2,2,2,2,2,2,2,2,2,2,1,0,0,0,1,2,2,2,2,2,2,2,2,2,2,2],
+          [1,1,1,1,1,2,1,1,1,2,1,1,1,1,1,2,1,1,1,2,1,1,1,1,2,1],
+          [1,3,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,1],
+          [1,2,1,1,2,1,2,1,3,1,2,1,2,1,2,1,3,1,1,1,1,1,3,1,2,1],
+          [1,2,2,2,2,1,2,2,2,1,2,2,6,1,2,1,2,2,2,1,2,2,2,1,2,1],
+          [1,2,1,1,2,1,1,1,2,1,2,1,1,1,2,1,1,1,2,1,2,1,1,1,2,1],
+          [1,2,2,2,2,1,2,2,2,1,2,2,2,1,2,1,2,2,2,1,2,2,1,2,2,1],
+          [1,2,1,1,2,1,3,1,1,1,1,1,2,1,2,1,2,1,3,1,2,2,1,2,2,1],
+          [1,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,1],
+          [1,1,2,1,1,2,1,1,2,1,1,1,2,1,2,2,1,1,2,1,1,2,1,2,1,1],
+          [1,3,3,3,1,2,2,2,2,2,1,2,2,1,2,2,1,2,2,2,2,1,3,3,3,1],
+          [1,3,1,3,1,2,2,1,2,2,2,2,2,2,2,2,2,2,1,2,2,1,3,1,3,1],
+          [1,1,1,1,1,1,1,1,1,1,1,1,1,2,1,1,1,1,1,1,1,1,1,1,1,1],
+        ];
+        
+        var worldDict = {//map graphics
+          0: 'empty',
+          1: 'letters',
+          2: 'snowflake',
+          3: 'babooshka',
+          4: 'ghostLid',
+          5: 'ghostGate',
+          6: 'burningmoney',
+          7: 'scorebox',
+          8: 'brick',
+          9: 'score'};
+
+                function mapLevel(){//maps the game using the array and 'graphics' from the dictionary
+          var output = '';
+          for (var i = 0; i<world.length; i++){
+            output += "<div class = 'row'>";
+            for(var j= 0; j< world[i].length; j++){
+              output += "<div class = '" + worldDict[world[i][j]] + "'></div>";}
+              output += "</div>";// console.log(output);
+            };
+          document.getElementById('world').innerHTML = output;
+        }
+
+mapLevel();
+
+  </script>
+</html>
