@@ -43,30 +43,41 @@
           [1,1,1,1,1,2,1,1,1,2,1,4,5,4,1,2,1,1,1,2,1,1,1,1,1],
           [0,0,0,0,0,2,2,2,2,2,1,0,0,0,1,2,2,2,2,2,0,0,0,0,0],
           [1,1,1,1,1,2,1,1,1,2,1,1,1,1,1,2,1,1,1,2,1,1,1,1,1],
-          [1,3,2,2,2,2,2,2,2,2,2,2,0,2,2,2,2,2,2,2,2,2,2,3,1],
+          [1,2,2,2,2,2,2,2,2,2,2,2,0,2,2,2,2,2,2,2,2,2,2,2,1],
           [1,2,1,1,2,8,0,0,0,8,2,2,8,2,2,8,0,0,0,8,2,1,1,2,1],
           [1,2,1,1,2,8,8,0,8,8,2,8,6,8,2,8,8,0,0,8,2,1,1,2,1],
           [1,2,1,1,2,8,0,8,0,8,2,8,8,8,2,8,0,8,0,8,2,1,1,2,1],
           [1,2,1,1,2,8,0,0,0,8,2,8,3,8,2,8,0,0,8,8,2,1,1,2,1],
           [1,2,1,1,2,8,0,0,0,8,2,8,2,8,2,8,0,0,0,8,2,1,1,2,1],
-          [1,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,1],
+          [1,3,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,3,1],
           [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
         ];
         
-      var worldDict = {//map graphics
-        0: 'empty',
-        1: 'brick',
-        2: 'snowflake',
-        3: 'coin',
-        4: 'ghostLid',
-        5: 'ghostGate',
-        6: 'burningmoney',
-        7: 'scorebox',
-        8: 'letters',
-        9: 'score'};
         
-      var trumpman = { x: 12, y: 11, name: "trump"}; //starting points for these characters
-      var hillary = { x: 1, y: 1, direction: "down", name: 'hillary'};      
+        var worldDict = {//map graphics
+          0: 'empty',
+          1: 'brick',
+          2: 'pill',
+          3: 'coin',
+          4: 'ghostLid',
+          5: 'ghostGate',
+          6: 'burningmoney',
+          7: 'scorebox',
+          8: 'letters',
+          9: 'score'};
+          
+          function printCoord(){
+          var worldCoord = [];
+          for(var x = 0; x<26;x++){
+            for(var y = 0; y<20;y++){
+              worldCoord.push([x,y]);
+              }
+            }
+            console.log(worldCoord);
+            return worldCoord;
+          }
+          var trumpman = { x: 12, y: 11, name: "trump"}; //starting points for these characters
+          var hillary = { x: 1, y: 1, direction: "down", name: 'hillary'};      
       var arnold = { x: 1, y: 11, direction: "down", name: 'arnold'};
       var bernie = { x: 23, y: 1, direction: "down", name: 'bernie'};      
       var barack = {x: 23, y: 11, direction: "down", name: 'barack'};
@@ -85,7 +96,7 @@
     //FUNCTIONS
 
     function checkOverlap(char1, char2) {
-      if(char1.x === char2.x && char1.y === char2.y)
+      if((char1.x === char2.x && char1.y === char2.y) || (char2.x === char1.x && char2.y === char1.y))
         {deathAlert(char1); gameOver()};
       }
 
@@ -118,13 +129,13 @@
         [1,1,1,1,1,2,1,1,1,2,1,4,5,4,1,2,1,1,1,2,1,1,1,1,1],
         [0,0,0,0,0,2,2,2,2,2,1,0,0,0,1,2,2,2,2,2,0,0,0,0,0],
         [1,1,1,1,1,2,1,1,1,2,1,1,1,1,1,2,1,1,1,2,1,1,1,1,1],
-        [1,3,2,2,2,2,2,2,2,2,2,2,0,2,2,2,2,2,2,2,2,2,2,3,1],
+        [1,2,2,2,2,2,2,2,2,2,2,2,0,2,2,2,2,2,2,2,2,2,2,2,1],
         [1,2,1,1,2,8,0,0,0,8,2,2,8,2,2,8,0,0,0,8,2,1,1,2,1],
         [1,2,1,1,2,8,8,0,8,8,2,8,6,8,2,8,8,0,0,8,2,1,1,2,1],
         [1,2,1,1,2,8,0,8,0,8,2,8,8,8,2,8,0,8,0,8,2,1,1,2,1],
         [1,2,1,1,2,8,0,0,0,8,2,8,3,8,2,8,0,0,8,8,2,1,1,2,1],
         [1,2,1,1,2,8,0,0,0,8,2,8,2,8,2,8,0,0,0,8,2,1,1,2,1],
-        [1,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,1],
+        [1,3,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,3,1],
         [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
       ];
 
@@ -133,7 +144,7 @@
       
       drawTrumpman();
       
-      var hillary = { x: 1, y: 1};     var arnold = { x: 1, y: 17};      var bernie = { x: 11, y: 17};    
+      var hillary = { x: 1, y: 1};     var arnold = { x: 1, y: 17};      var bernie = { x: 11, y: 17}; var barack = { x:24, y:17};    
       drawHillary();
       drawArnold();
       drawBernie();
@@ -207,10 +218,7 @@
             hillary.y++;
             drawHillary();
             i++;
-            if(i == 6){
-              hillary.direction = "right"; 
-              i = 0;
-            }
+            if(i == 6){hillary.direction = "right"; i = 0;}
         }
         while(hillary.direction == "right" && i < 4){
           // console.log(hillary.direction, hillary.x)
@@ -243,42 +251,39 @@
 
     async function spriteArnie() {
       while(world[arnold.y][arnold.x] != world[trumpman.y][trumpman.x]){
-      while(arnold.direction == "down" && j < 6){
-        drawArnold();
-          await sleep(300);
-          if(checkOverlap(arnold, trumpman)) return gameOver();
-          arnold.y++;
+        while(arnold.direction == "down" && j < 6){
           drawArnold();
-          j++;
-          if(j == 6){
-            arnold.direction = "right"; 
-            j = 0;
+            await sleep(300);
+            if(checkOverlap(arnold, trumpman)) return gameOver();
+            arnold.y++;
+            drawArnold();
+            j++;
+            if(j == 6){arnold.direction = "right"; j = 0;}
+        }
+        while(arnold.direction == "right" && j < 4){
+            // console.log(arnold.direction, arnold.x)
+            await sleep(300);
+            if(checkOverlap(arnold, trumpman)) return gameOver();
+            arnold.x++;
+            drawArnold();
+            j++
+            if(j == 3){arnold.direction = 'up'; j = 0};
           }
-      }
-      while(arnold.direction == "right" && j < 4){
-          // console.log(arnold.direction, arnold.x)
+        while(arnold.direction == 'up' && j < 7){
           await sleep(300);
           if(checkOverlap(arnold, trumpman)) return gameOver();
-          arnold.x++;
-          drawArnold();
-          j++
-          if(j == 3){arnold.direction = 'up'; j = 0};
-        }
-      while(arnold.direction == 'up' && j < 7){
-        await sleep(300);
-        if(checkOverlap(arnold, trumpman)) return gameOver();
-            arnold.y--;
-            drawArnold();
-            j++;
-          if(j == 6){arnold.direction = 'left'; j = 0};
-        }
-        while(arnold.direction == 'left' && j < 3){
-          await sleep(300);
-          if(checkOverlap(arnold, trumpman)) return gameOver();
-            arnold.x--;
-            drawArnold();
-            j++;
-          if(j==3){arnold.direction = 'down'; j = 0};
+              arnold.y--;
+              drawArnold();
+              j++;
+            if(j == 6){arnold.direction = 'left'; j = 0};
+          }
+          while(arnold.direction == 'left' && j < 3){
+            await sleep(300);
+            if(checkOverlap(arnold, trumpman)) return gameOver();
+              arnold.x--;
+              drawArnold();
+              j++;
+            if(j==3){arnold.direction = 'down'; j = 0};
         }
       }
     }     
@@ -292,10 +297,7 @@
           bernie.y++;
           drawBernie();
           k++;
-          if(k == 6){
-            bernie.direction = "left"; 
-            k = 0;
-          }
+          if(k == 6){bernie.direction = "left"; k = 0;}
         }
         while(bernie.direction == 'left' && k < 4){
           await sleep(1000);
@@ -335,10 +337,7 @@
         barack.y++;
         drawBarack();
         l++;
-        if(l == 6){
-          barack.direction = "left"; 
-          l = 0;
-        }
+        if(l == 6){barack.direction = "left"; l = 0;}
       }
       while(barack.direction == "left" && l < 4){
           // console.log(barack.direction, barack.x)

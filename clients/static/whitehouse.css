@@ -88,6 +88,15 @@ height: 4.5vh;
 width: 5vh;
 }
 
+.column{
+  background: url("images/column.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  height: 4.5vh;
+  width: 5vh;
+  }
+
 .coin{
 background: url("images/coin.gif");
 background-repeat: no-repeat;
@@ -96,6 +105,15 @@ background-size: contain;
 height: 4.5vh;
 width: 5vh;
 }
+
+.email{
+  background: url("images/email.gif");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  height: 4.5vh;
+  width: 5vh;
+  }
 
 .empty{
   height: 4.5vh;
